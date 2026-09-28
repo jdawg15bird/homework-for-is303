@@ -1,0 +1,57 @@
+expenses = []
+
+# Ask the user for expenses
+while True:
+    expense = float(input("Enter an expense or 0 to finish: "))
+
+    # Check for negative numbers
+    if expense < 0:
+        print("Expense cannot be negative. Try again.")
+
+    # Stop when the user enters 0
+    elif expense == 0:
+        break
+
+    # Add the expense to the list
+    else:
+        expenses.append(expense)
+
+
+# Make sure the user entered at least one expense
+if len(expenses) > 0:
+
+    small = 0
+    moderate = 0
+    large = 0
+
+    # Classify each expense
+    for expense in expenses:
+        if expense < 25:
+            small += 1
+        elif expense <= 100:
+            moderate += 1
+        else:
+            large += 1
+
+    # Calculate the results
+    total_number = len(expenses)
+    total_expenses = sum(expenses)
+    average_expense = total_expenses / total_number
+    smallest_expense = min(expenses)
+    largest_expense = max(expenses)
+
+    # Print the results
+    print()
+    print("Expense Summary")
+    print("----------------")
+    print(f"Total number of expenses: {total_number}")
+    print(f"Total expenses: ${total_expenses:.2f}")
+    print(f"Average expense: ${average_expense:.2f}")
+    print(f"Smallest expense: ${smallest_expense:.2f}")
+    print(f"Largest expense: ${largest_expense:.2f}")
+    print(f"Small expenses: {small}")
+    print(f"Moderate expenses: {moderate}")
+    print(f"Large expenses: {large}")
+
+else:
+    print("No expenses were entered.")
